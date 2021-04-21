@@ -3,6 +3,6 @@ import Setting from "../entities/Setting";
 
 
 @EntityRepository(Setting)
-export default class SettingsRepository extends Repository<Setting> {
+class SettingsRepository extends Repository<Setting> {}
 
-}
+export default SettingsRepository;
