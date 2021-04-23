@@ -16,7 +16,7 @@ class UsersService {
         user_id,
         id,
     }: ICreateConnectionDTO): Promise<Connection> {
-        const user = this.connectionsRepository.create({
+        const user = await this.connectionsRepository.create({
             socket_id,
             admin_id,
             user_id,

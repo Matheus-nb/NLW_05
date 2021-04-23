@@ -28,7 +28,7 @@ class MessagesRepository implements IMessagesRepository {
     }
 
     public async findById(user_id: string): Promise<Messages[]> {
-        const messages = this.ormRepository.find({
+        const messages = await this.ormRepository.find({
             where: { user_id },
             relations: ['user'],
         });

@@ -3,17 +3,17 @@ import Connection from '../infra/typeorm/entities/Connection';
 import IConnectionsRepository from '../repositories/IConnectionsRepository';
 
 @injectable()
-class ConnectionsByUserId {
+class ConnectionsWithoutAdminService {
     constructor(
         @inject('ConnectionsRepository')
         private connectionsRepository: IConnectionsRepository,
     ) {}
 
-    public async execute(user_id: string): Promise<Connection | undefined> {
-        const user = await this.connectionsRepository.findByUserId(user_id);
+    public async execute(): Promise<Connection[] | undefined> {
+        const users = await this.connectionsRepository.findWithoutAdmin();
 
-        return user;
+        return users;
     }
 }
 
-export default ConnectionsByUserId;
+export default ConnectionsWithoutAdminService;

@@ -11,7 +11,7 @@ class MessagesListByUserServices {
     ) {}
 
     public async execute(user_id: string): Promise<Messages[]> {
-        const messages = this.messagesRepository.findById(user_id);
+        const messages = await this.messagesRepository.findById(user_id);
 
         return messages;
     }

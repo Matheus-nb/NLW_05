@@ -27,13 +27,13 @@ class SettingsRepository implements ISettingsRepository {
     public async findByUsername(
         username: string,
     ): Promise<Setting | undefined> {
-        const setting = this.ormRepository.findOne(username);
+        const setting = await this.ormRepository.findOne(username);
 
         return setting;
     }
 
     public async Update({ chat, username }: ICreateSettingsDTO): Promise<void> {
-        const setting = this.ormRepository
+        await this.ormRepository
             .createQueryBuilder()
             .update(Setting)
             .set({ chat })

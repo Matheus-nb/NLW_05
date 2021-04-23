@@ -9,14 +9,8 @@ class UsersService {
         private usersRepository: IUsersRepository,
     ) {}
 
-    public async execute(email: string): Promise<User> {
-        const UserAlreadyExists = await this.usersRepository.findByEmail(email);
-
-        if (UserAlreadyExists) {
-            return UserAlreadyExists;
-        }
-
-        const user = await this.usersRepository.create(email);
+    public async execute(id: string): Promise<User | undefined> {
+        const user = await this.usersRepository.findById(id);
 
         return user;
     }
